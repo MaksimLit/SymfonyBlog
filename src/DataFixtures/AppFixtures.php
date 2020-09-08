@@ -4,6 +4,8 @@ namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
+use App\Entity\Post;
 
 class AppFixtures extends Fixture
 {
@@ -11,7 +13,7 @@ class AppFixtures extends Fixture
 
     private $slug;
 
-    public function __construct(Slugify $slugify)
+    public function __construct(\Cocur\Slugify\SlugifyInterface $slugify)
     {
         $this->faker = Factory::create();
         $this->slug = $slugify;
