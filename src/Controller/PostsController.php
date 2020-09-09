@@ -87,4 +87,16 @@ class PostsController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/posts/{slug}/delete", name="blog_post_delete")
+     */
+    public function delete(Post $post)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($post);
+        $em->flush();
+
+        return $this->redirectToRoute('blog_posts');
+    }
 }
