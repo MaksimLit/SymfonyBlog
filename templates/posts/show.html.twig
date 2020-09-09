@@ -2,4 +2,5 @@
 
 {% block body %}
     <p>{{ post.body }}</p>
+    <a href="{{ path('blog_post_edit', {'slug': post.slug}) }}">Редактировать</a>
 {% endblock %}
