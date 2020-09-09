@@ -76,7 +76,8 @@ class PostsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $post->setSlug($slugify->slugify($post->getTitle()));
-            $this->em->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
 
             return $this->redirectToRoute('blog_show', [
                 'slug' => $post->getSlug()
