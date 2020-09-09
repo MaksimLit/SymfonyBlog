@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %} {% endblock %}
 
 {% block body %}
     {% for post in posts %}
-        {{ post.title }}
+        <a href="{{ path('blog_show', {'slug': post.slug}) }}">{{ post.title }}</a><br><br>
     {% endfor %}
 {% endblock %}
