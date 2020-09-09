@@ -2,10 +2,11 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Post;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
-use App\Entity\Post;
+
 
 class AppFixtures extends Fixture
 {
