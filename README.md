@@ -1,6 +1,6 @@
 Symfony 5: Blog
 =====================
-h2 Application deployment instructions
+Application deployment instructions
 -----------------------------------
 ### 1. Clone the repository
 git clone https://github.com/MaksimLit/SymfonyBlog
