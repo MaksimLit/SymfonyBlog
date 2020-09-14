@@ -21,7 +21,7 @@ class PostsController extends AbstractController
     }
 
     /**
-     * @Route("/posts", name="blog_posts")
+     * @Route("/", name="blog_posts")
      */
     public function posts()
     {
