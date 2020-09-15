@@ -10,6 +10,7 @@
                 </div>
                 <div class="col-4 ml-auto">
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a class="btn btn-light" href="{{ path('app_dashboard_index') }}">Панель администратора</a>
                         <a class="btn btn-light" href="{{ path('app_logout') }}">Выйти</a>
                     {% else %}
                         <a class="btn btn-light" href="{{ path('app_login') }}">Войти</a>
