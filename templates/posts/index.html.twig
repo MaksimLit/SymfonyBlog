@@ -2,13 +2,35 @@
 
 {% block title %} {% endblock %}
 {% block body %}
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <a href="{{ path('app_logout') }}">Выйти</a>
-    {% else %}
-        <a href="{{ path('app_login') }}">Войти</a>
-        <a href="{{ path('app_register') }}">Регистрация</a>
-    {% endif %}
-    {% for post in posts %}
-        <a href="{{ path('blog_show', {'slug': post.slug}) }}">{{ post.title }}</a><br><br>
-    {% endfor %}
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <a class="logo" href="/">Blog</a>
+                </div>
+                <div class="col-4 ml-auto">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a class="btn btn-light" href="{{ path('app_logout') }}">Выйти</a>
+                    {% else %}
+                        <a class="btn btn-light" href="{{ path('app_login') }}">Войти</a>
+                        <a class="btn btn-light" href="{{ path('app_register') }}">Регистрация</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="container">
+            {% for post in posts %}
+                <a href="{{ path('blog_show', {'slug': post.slug}) }}">{{ post.title }}</a><br><br>
+            {% endfor %}
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-2">&#169; Maksim Litvyakov</div>
+            </div>
+        </div>
+    </footer>
 {% endblock %}
