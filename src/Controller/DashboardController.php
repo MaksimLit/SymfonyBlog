@@ -28,6 +28,6 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::section('Impotent');
         yield MenuItem::linkToCrud('Posts', 'fa fa-file-pdf', Post::class);
-        yield MenuItem::linkToCrud('Users', 'fa fa-file-pdf', User::class);
+        yield MenuItem::linkToCrud('Users', 'fa fa-users', User::class);
     }
 }
