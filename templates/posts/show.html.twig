@@ -1,13 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
-{% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
+
 {% block body %}
-    {% autoescape %}
-        <p>{{ post.body|raw }}</p>
-    {% endautoescape %}
-    {% block javascripts %}
-        <script src="{{ asset('build/js/app.js') }}"></script>
-    {% endblock %}
+    <br>
+    <div class="container col-sm-12">
+        <h4>{{ post.title }}</h4>
+        <p>{{ post.body }}</p><hr>
+        <span>{{ post.getCreatedAt() | date("m/d/Y") }}</span><br><hr>
+        <div class="container">
+            {{ form_start(form) }}
+            {{ form_row(form.comment) }}
+            <button type="submit" class="btn btn-primary">Отправить</button>
+            {{ form_end(form) }}
+        </div>
+        {%  for comment in post.comments %}
+            <p>{{ comment.comment }}</p><hr>
+        {% endfor %}
+    </div>
 {% endblock %}

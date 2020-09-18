@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -55,6 +56,19 @@ class Post
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+    }
+
+    public function addComment(Comment $comment): void
+    {
+        $comment->setPost($this);
+
+        if (!$this->comments->contains($comment)) {
+            $this->comments->add($comment);
+        }
+    }
+    public function removeComment(Comment $comment): void
+    {
+        $this->comments->removeElement($comment);
     }
 
     /**
@@ -119,5 +133,13 @@ class Post
     public function setCreatedAt(\DateTimeInterface $created_at): void
     {
         $this->created_at = $created_at;
+    }
+
+    /**
+     * @return Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
     }
 }
